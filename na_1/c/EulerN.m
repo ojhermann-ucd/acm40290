@@ -12,10 +12,10 @@ function s = sum_element(n)
 	s = 1 / factorial(n);
 end
 
-function f = factorial(n)
-	f = 1;
-	while n > 1
-		f = f * n;
-		n = n - 1;
-	end
-end
+% function f = factorial(n)
+% 	f = 1;
+%	while n > 1
+%		f = f * n;
+%		n = n - 1;
+%	end
+% end
