@@ -17,4 +17,4 @@ def approximation_of_pi(limit):
 
 
 for i in [1, 3, 6, 9]:
-	print(approximation_of_pi(10**i))
+	print(format(approximation_of_pi(10**i), ".32f"))
