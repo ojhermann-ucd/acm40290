@@ -13,12 +13,12 @@ def approximation_of_pi():
 	n = 0
 	prior = 0
 	current = 0
-	change = True
-	while change:
+	over_flow = False
+	while not over_flow:
 		prior = current
-		current += (4 * sum_element(n))
+		current += (sum_element(n) * 4)
 		n += 1
-		change = (current != prior)
-	return format(n - 1, ".32f")
+		over_flow = (current == float("Inf"))
+	return [n - 1, format(prior, ".32f")]
 
 print(approximation_of_pi())
