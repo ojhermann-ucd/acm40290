@@ -34,21 +34,47 @@ acm40290_pi = 3.1415926535897932384626433832795
 
 matlab_e = 2.7182818284590455348848081484903
 
+acm40290_e =  2.7182818284590452353602874713527
+
 acm40290_constant = 0.57721566490153286060651209008240
+
+
+# comp_fnc
+def comp_fnc(powers, external, values):
+	index = 0
+	return_array = list()
+	for v in values:
+		if v > external:
+			return_array.append(("over estimates by", powers[index], v - external))
+		elif v < external:
+			return_array.append(("under estimates by", powers[index], external - v))
+		else:
+			return_array.append(("provides the same estimate within", powers[index], external - v))
+		index += 1
+	return return_array
 
 
 # PI
 print("")
 pi_difference = matlab_pi - acm40290_pi
-print("The difference between matlab_pi and acm40290_pi is {}".format(format(pi_difference, ".32f")))
-print("We will treat matlab_pi and acm40290_pi as equal.")
+print("matlab_pi is {} and acm40290_pi is {}".format(format(matlab_pi, ".32f"), format(acm40290_pi, ".32f")))
+print("Their difference is {}, so we will treat them as equal".format(format(pi_difference, ".32f")))
 
 print("")
-index = 0
-for pi in Pi1:
-	if pi > matlab_pi:
-		print("Pi1(n) for n = 10^{} is larger than matlab_pi by {}".format(powers[index], format(pi - matlab_pi, ".32f")))
-	else:
-		print("Pi1(n) for n = 10^{} is smaller than matlab_pi by {}".format(powers[index], format(matlab_pi - pi, ".32f")))
-	index += 1
+for item in comp_fnc(powers, matlab_pi, Pi1):
+	print("Pi1(n) for n = 10^{} {} {} when compared to matlab_pi".format(item[1], item[0], format(item[2], ".32f")))
+
 print("")
+for item in comp_fnc(powers, matlab_pi, Pi2):
+	print("Pi2(n) for n = 10^{} {} {} when compared to matlab_pi".format(item[1], item[0], format(item[2], ".32f")))
+
+
+# e
+print("")
+print("matlab_e is {}".format(format(matlab_e, ".32f")))
+for item in comp_fnc(powers, matlab_e, EulerN):
+	print("EulerN(n) for n = 10^{} {} {} when compared to matlab_e".format(item[1], item[0], format(item[2], ".32f")))
+print("")
+print("acm40290_e is {}".format(format(acm40290_e, ".32f")))
+for item in comp_fnc(powers, acm40290_e, EulerN):
+	print("EulerN(n) for n = 10^{} {} {} when compared to matlab_e".format(item[1], item[0], format(item[2], ".32f")))
