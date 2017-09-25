@@ -1,4 +1,3 @@
-
 % a while based implementation of the requested function
 function p = Pi1(n)
 	current = 0;

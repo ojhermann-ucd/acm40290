@@ -21,15 +21,15 @@ acm40290_pi = 3.1415926535897932384626433832795
 
 
 print("")
-print("The difference between the matlab_pi and acm40290_pi is {}".format(float(matlab_pi - acm40290_pi), ".32g"))
+print("The difference between the matlab_pi and acm40290_pi is {}".format(matlab_pi - acm40290_pi, ".32f"))
 
 pi_1_differences = [matlab_pi - pi for pi in pi_1_outputs]
 print("")
-print("Pi1(n) - matlab_pi: {}".format(pi_1_differences))
+print("Pi1(n) - matlab_pi: {}".format(pi_1_differences, ".32f"))
 
 pi_2_differences = [matlab_pi - pi for pi in pi_2_outputs]
 print("")
-print("Pi2(n) - matlab_pi: {}".format(pi_2_differences))
+print("Pi2(n) - matlab_pi: {}".format(pi_2_differences, ".32f"))
 
 comp_dict = dict()
 for j in range(len(pi_2_differences)):
