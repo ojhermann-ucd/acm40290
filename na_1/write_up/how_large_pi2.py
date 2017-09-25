@@ -15,11 +15,14 @@ def approximation_of_pi():
 	current = 1
 	over_flow = False
 	while not over_flow:
-		prior = current
-		current *= (product_element(n))
-		n += 1
-		over_flow = (current*2 == float("Inf"))
-		print([n - 1, format(prior*2, ".32f")])
+		over_flow = (2*n == float("Inf"))
+		if over_flow:
+			pass
+		else:
+			prior = current
+			current *= (product_element(n))
+			n += 1
+			print([n - 1, format(prior*2, ".32f")])
 	return [n - 1, format(prior*2, ".32f")]
 
 print(approximation_of_pi())
