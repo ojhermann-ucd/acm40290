@@ -186,7 +186,7 @@ print("The product components of Pi2(n) are well-conditioned for large n, with c
 print("But because the initial product component of Pi2(n) is 4/3, Pi2(n) is also ill-conditioned.")
 
 print("")
-print("On the whole, it seems that Pi1(n) is a better method thatn Pi2(n)")
+print("On the whole, it seems that Pi1(n) is a better method thatn Pi2(n) because it produces a more accurate value of Pi more quickly.")
 
 print("")
 
