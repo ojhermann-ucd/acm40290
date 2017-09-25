@@ -15,10 +15,14 @@ def approximation_of_pi():
 	current = 0
 	over_flow = False
 	while not over_flow:
-		prior = current
-		current += (sum_element(n) * 4)
-		n += 1
-		over_flow = (current == float("Inf"))
+		over_flow = (4*n == float("Inf"))
+		if over_flow:
+			pass
+		else:
+			prior = current
+			current += (sum_element(n) * 4)
+			n += 1
+			print([n - 1, format(prior, ".32f")])
 	return [n - 1, format(prior, ".32f")]
 
 print(approximation_of_pi())

@@ -19,6 +19,7 @@ def approximation_of_pi():
 		current *= (product_element(n))
 		n += 1
 		over_flow = (current*2 == float("Inf"))
+		print([n - 1, format(prior*2, ".32f")])
 	return [n - 1, format(prior*2, ".32f")]
 
 print(approximation_of_pi())
