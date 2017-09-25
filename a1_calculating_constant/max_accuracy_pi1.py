@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 def sum_element_1(n):
 	return 1 / (4*n + 1)
 

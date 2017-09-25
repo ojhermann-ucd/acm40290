@@ -19,7 +19,6 @@ def approximation_of_pi():
 		current *= (product_element(n))
 		n += 1
 		change = (2*prior != 2*current)
-		print([n - 1, format(prior*2, ".32f")])
 	return [n - 1, format(prior*2, ".32f")]
 
 
