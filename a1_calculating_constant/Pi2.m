@@ -5,7 +5,7 @@ function p = Pi2(n)
 		estimate = estimate * product_element(current);
 		current = current + 1;
 	end
-	p = vpa(estimate * 2);
+	p = vpa(single(estimate * 2));
 end
 
 function p = product_element(n)

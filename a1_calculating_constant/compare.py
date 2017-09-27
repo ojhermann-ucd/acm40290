@@ -3,36 +3,36 @@
 powers = [1, 3, 6, 9]
 
 Pi1 = [
-	3.0961615264636410671528210514225,
-	3.1410931531214445477928620675812,
-	3.1415921535904018924156844150275,
-	3.1415926445762156760110883624293,
+	3.0961616039276123046875,
+	3.14109325408935546875,
+	3.1415922641754150390625,
+	3.1415927410125732421875,
 ]
 
 Pi2 = [
-	3.0677038066434976215646202035714,
-	3.1408077460303815975350971712032,
-	3.1415918681917531785074970684946,
-	3.1415925577422174619357519986806,
+	3.067703723907470703125,
+	3.140807628631591796875,
+	3.1415917873382568359375,
+	3.141592502593994140625,
 ]
 
 EulerN = [
-	2.7182818011463845131459038384492,
-	2.7182818284590455348848081484903,
+	2.71828174591064453125,
+	2.71828174591064453125,
 ]
 
 EulerC = [
-	0.62638316097420787542660036706366,
-	0.57771558156820645990592311136425,
-	0.57721616490071525618077430408448,
-	0.57721566540213942175796546507627,
+	0.62638318538665771484375,
+	0.57771557569503389442877,
+	0.57721614837646484375,
+	0.577215671539306640625,
 ]
 
-matlab_pi = 3.1415926535897932384626433832795
+matlab_pi = 3.1415927410125732421875
 
 acm40290_pi = 3.1415926535897932384626433832795
 
-matlab_e = 2.7182818284590455348848081484903
+matlab_e = 2.71828174591064453125
 
 acm40290_e =  2.7182818284590452353602874713527
 
@@ -50,11 +50,8 @@ def relative_error(approx, actual):
 # PI
 print("")
 print("The given values of Pi")
-pi_difference = matlab_pi - acm40290_pi
 print("matlab_pi = {}".format(format(matlab_pi, ".32f")))
 print("acm40290_pi = {}".format(format(acm40290_pi, ".32f")))
-print("matlab_pi - acm40290_pi = {}".format(format(pi_difference, ".32f")))
-print("We will consider matlab_pi = acm40290_pi")
 
 print("")
 print("The values of Pi1(n) are:")
@@ -77,6 +74,16 @@ for item in Pi1:
 	print(message)
 
 print("")
+print("Relative Error of Pi1(n) compared to acm40290_pi")
+index = 0
+for item in Pi1:
+	n_value = powers[index]
+	r_error = format(relative_error(item, acm40290_pi), ".32f")
+	message = "Pi1(10^{}) has relative error of {}".format(n_value, r_error)
+	index += 1
+	print(message)
+
+print("")
 print("The values of Pi2(n) are:")
 index = 0
 for item in Pi2:
@@ -92,7 +99,17 @@ index = 0
 for item in Pi2:
 	n_value = powers[index]
 	r_error = format(relative_error(item, matlab_pi), ".32f")
-	message = "Pi1(10^{}) has relative error of {}".format(n_value, r_error)
+	message = "Pi2(10^{}) has relative error of {}".format(n_value, r_error)
+	index += 1
+	print(message)
+
+print("")
+print("Relative Error of Pi2(n) compared to acm40290_pi")
+index = 0
+for item in Pi2:
+	n_value = powers[index]
+	r_error = format(relative_error(item, acm40290_pi), ".32f")
+	message = "Pi2(10^{}) has relative error of {}".format(n_value, r_error)
 	index += 1
 	print(message)
 
@@ -186,7 +203,7 @@ print("The product components of Pi2(n) are well-conditioned for large n, with c
 print("But because the initial product component of Pi2(n) is 4/3, Pi2(n) is also ill-conditioned.")
 
 print("")
-print("On the whole, it seems that Pi1(n) is a better method thatn Pi2(n) because it produces a more accurate value of Pi more quickly.")
+print(	)
 
 print("")
 

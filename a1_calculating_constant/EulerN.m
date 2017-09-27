@@ -5,7 +5,7 @@ function value = EulerN(n)
 		estimate = estimate + sum_element(current);
 		current = current + 1;
 	end
-	value = vpa(estimate);
+	value = vpa(single(estimate));
 end
 
 function s = sum_element(n)

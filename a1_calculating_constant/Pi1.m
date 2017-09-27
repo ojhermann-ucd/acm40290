@@ -6,7 +6,7 @@ function p = Pi1(n)
 		estimate = estimate + the_sum(current);
 		current = current + 1;
 	end
-	p = vpa(estimate * 4);
+	p = vpa(single(estimate * 4));
 end
 
 % the sum component for each n
