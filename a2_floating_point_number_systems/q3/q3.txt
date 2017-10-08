@@ -1,0 +1,5 @@
+An alternating infinite series is difficult to evaluate in floating poit arithmetic because of the potential for catastrophic cancellation in subtraction and the resulting loss of precision.  There is a significant potential for loss of precision if the numbers have the same exponent and the significant agrees to k digits.
+
+This means that for a numeric approximation of say, the Maclaurin series of e^x with x < 0, you could try to minimise catastrophic cancellation in substraction by rewriting the formula in a numerically suitable form; however, before embarking on this endeavour it would be sensible to make sure that the function isn't ill-conditioned, as no method can compensate for an ill-conditioned problem.
+
+cond(e^x) = |x|e^x / e^x = |x|, so if x is less than -1 or greater than 1, even a rewriting of the formula won't help.
