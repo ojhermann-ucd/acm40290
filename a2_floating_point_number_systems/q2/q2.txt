@@ -1,0 +1,41 @@
+eps
+- Floating-point relative accuracy
+- eps returns the distance from 1.0 to the next larger double-precision number, that is, eps = 2^-52.
+- http://uk.mathworks.com/help/matlab/ref/eps.html
+
+realmax
+- Largest positive floating-point number
+- realmax returns the largest finite floating-point number in IEEE® double precision.
+- http://uk.mathworks.com/help/matlab/ref/realmax.html?s_tid=doc_ta
+
+realmin
+- Smallest positive normalized floating-point number
+- realmin returns the smallest positive normalized floating-point number in IEEE® double precision.
+- http://uk.mathworks.com/help/matlab/ref/realmin.html?s_tid=doc_ta
+
+Inf
+- Infinity
+- Inf returns the IEEE® arithmetic representation for positive infinity. Infinity values result from operations like division by zero and overflow, which lead to results too large to represent as conventional floating-point values.
+- http://uk.mathworks.com/help/matlab/ref/inf.html?s_tid=doc_ta
+
+pi
+- Ratio of circle's circumference to its diameter
+- pi returns the floating-point number nearest the value of π. The expressions 4*atan(1) and imag(log(-1)) provide the same value.
+- http://uk.mathworks.com/help/matlab/ref/pi.html?s_tid=doc_ta
+
+date
+- Current date string
+- date returns a character vector containing the date in the format, day-month-year, for example, 01-Jan-2014.
+- http://uk.mathworks.com/help/matlab/ref/date.html?s_tid=doc_ta
+
+ver
+- Version information for MathWorks products
+- ver displays:
+-- A header containing the current MATLAB® product family version number, license number, operating system, and version of Java® software for the MATLAB product.
+-- The version numbers for MATLAB and all other installed MathWorks® products.
+- http://uk.mathworks.com/help/matlab/ref/ver.html?s_tid=doc_ta
+
+version
+- Version number for MATLAB and libraries
+- version returns in ans the version and release number for the MATLAB® software currently running.
+- http://uk.mathworks.com/help/matlab/ref/version.html?s_tid=doc_ta
