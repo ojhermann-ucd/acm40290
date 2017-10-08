@@ -26,4 +26,8 @@ d = 2.220446049250313e-16
 
 
 Explanation
+a is a double precision floating point approximation of 4/3 and b of 1/3; we can epect accuracy up to 15 digits and the maximum value of our relative rounding error, the unit roundoff u, to be machine epsilon (established earlier and also the value of d).  Given that each of the first sixteen elements of the approximation of the inifinite expansions of a and b is greater than machine epsilson (e.g. 3.0e-16 > machine epsilon), we can see that Matlab presents to us values that match the hand calculations faithfully out ot 15 digits.
 
+Matlabs calculation of c also matches our intuition, but this occurs because of rounding error: 0.333333333333333 + 0.333333333333333 + 0.333333333333333 = 0.999999999999999, but Matlab returns 1.000000000000000 becuase of the errors in addition using Matlab (or any floating point system; see 30/45).  EAS, in this case, is at most (b + b + b) * u and u <= machine epsilon, so EAS is possibly machine epsilon.  Given that we are dealing with the sum of three numbers that each have maximum precision and sum to a number whose difference from 1.000000000000000 is machine epsilon, u will cause the sum to round up.
+
+d returns machine epsilon because we are subtracting from an exact value of 1 an approximation of 1, which will, by its construction, differ from 1 by machine epsilon.
