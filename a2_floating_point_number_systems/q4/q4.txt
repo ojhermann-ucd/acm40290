@@ -1,0 +1,16 @@
+With exact arithmetic, the evaluation of the Harmonic Series suggests it diverges:
+
+- math goes here
+
+In floating point arithmetic, a finite sum is achieved because of unit roundoff, which determines the maximum possible relative error in representing a nonzero real number in a floating point system.
+- a floating point number is a finite rational approximation of a real number: u / v
+- a system of floating point numbers has a bound (see 6/45) of min and max
+-- this means that in any floating point system, the approximation of 1/n as n grows large eventually reaches min
+-- it also means that eventually the approximation of the series will reach max
+--- once at max, the system is unable to represent a higher number, so an approximation of the Harmonic Series will reach max
+
+We can see this in Matlab
+- show code for approximation of Harmonic
+- show output for realmax
+- show code for approximation of 1/n
+- show output for realmin
