@@ -1,0 +1,27 @@
+0/0
+- NaN
+- NaN returns the IEEE® arithmetic representation for Not-a-Number (NaN). These values result from operations which have undefined numerical results.
+- https://uk.mathworks.com/help/matlab/ref/nan.html
+
+Inf/Inf
+- NaN
+- NaN returns the IEEE® arithmetic representation for Not-a-Number (NaN). These values result from operations which have undefined numerical results.
+- https://uk.mathworks.com/help/matlab/ref/nan.html
+
+Inf * 0
+- NaN
+- NaN returns the IEEE® arithmetic representation for Not-a-Number (NaN). These values result from operations which have undefined numerical results.
+- https://uk.mathworks.com/help/matlab/ref/nan.html
+
+Inf - Inf
+- NaN
+- NaN returns the IEEE® arithmetic representation for Not-a-Number (NaN). These values result from operations which have undefined numerical results.
+- https://uk.mathworks.com/help/matlab/ref/nan.html
+
+0^0
+- 1
+- Any number to the power of 0 is one
+
+Inf ^ 0
+- 1
+- Inf is taken to be a number too large to be represented as a double (or whatever floating point system is employed), so this is treated as r^0 where r is some real number
