@@ -10,6 +10,6 @@ def mach_eps():
 		count += 1
 
 	# return by converting from e/2
-	return [me * 2, count - 1]
+	return [me * 2, count]
 
 print(mach_eps())
