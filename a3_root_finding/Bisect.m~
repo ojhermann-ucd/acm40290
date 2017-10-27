@@ -3,53 +3,61 @@ function [root, flag, iters] = Bisect(Xlo, Xhi, Xtol, Maxits)
 % generate the function
 f = @FUN;
 
-% PRE-ITERATION
-% cannot have no space between starting values
-if Xlo == Xhi 
+% initial entry flag=-2 check; did each as separte statement (as opposed to
+% a disjunction) to specify the error
+if Xlo == Xhi % cannot have no space between starting values
     root = 0;
     flag = -2;
     iters = 0;
     return
 end
-% cannot evaluate x=Inf
-if (Xlo == Inf) || (Xhi == Inf) 
+if (Xlo == Inf) || (Xhi == Inf) % cannot evaluate x=Inf
     root = Inf;
     flag = -2;
     iters = 0;
     return
 end
-% flo = f(Xlo)
 flo = f(Xlo);
-if flo == Inf % cannot progress from f=Inf
+if flo == Inf
     root = Xlo;
     flag = -2;
     iters = 0;
     return
-elseif flo == 0 % lucky guess
+elseif flo == 0
     root = Xlo;
     flag = 1;
     iters = 0;
     return
-else
-    % do nothing intentional
-% fhi = f(Xhi)
-fhi = f(Xhi);
-if fhi == Inf % cannot progress from f=Inf
-    root = Xhi;
-    flag = -2;
-    iters = 0;
-    return
-elseif fhi == 0 % lucky guess
-    root = Xhi;
-    flag = 1;
-    iters = 0;
-    return
-else
-    % do nothing intentional
 
-% ITERATION
+if (f(Xlo) == Inf) % cannot progress from f=Inf
+    root = Xlo;
+    flag = -2;
+    iters = 0;
+    return
+end
+if (f(Xhi) == Inf) % cannot progress from f=Inf
+    root = Xhi;
+    flag = -2;
+    iters = 0;
+    return
+end
+
+% lucky guess checks
+if f(Xlo) == 0
+    root = Xlo;
+    flag = 1;
+    iters = 0;
+    return;
+end
+if f(Xhi) == 0
+    root = Xhi;
+    flag = 1;
+    iters = 0;
+    return;
+end
+
+% iteration
 iterJ = 1;
-m = 0;
 while iterJ < Maxits
     % m value
     m = Xlo + ((Xhi - Xlo) / 2);
@@ -72,13 +80,14 @@ while iterJ < Maxits
     end
     
     % modify Xlo and Xhi
-    flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice in each loop
+    flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice
     if flo == Inf % can't progress with an infinite value
         root = m;
         flag = -2;
         iters = iterJ;
         return
-    elseif sign(flo) == sign(fm)
+    end
+    if sign(flo) == sign(fm)
         Xlo = m;
     else
         Xhi = m;
@@ -87,14 +96,6 @@ while iterJ < Maxits
     % increment iterJ
     iterJ = iterJ + 1;
 end
-
-% POST-ITERATION
-% flag = -1
-root = m;
-flag = -1;
-iters = iterJ;
-return
-
 
 %{
 	[root, flat, iters] = Bisect(Xlo, Xhi, Xtol, Maxits)
