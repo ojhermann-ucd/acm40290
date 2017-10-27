@@ -11,6 +11,7 @@ if Xlo == Xhi
     iters = 0;
     return
 end
+
 % cannot evaluate x=Inf
 if (Xlo == Inf) || (Xhi == Inf) 
     root = Inf;
@@ -18,6 +19,7 @@ if (Xlo == Inf) || (Xhi == Inf)
     iters = 0;
     return
 end
+
 % flo = f(Xlo)
 flo = f(Xlo);
 if flo == Inf % cannot progress from f=Inf
@@ -32,6 +34,8 @@ elseif flo == 0 % lucky guess
     return
 else
     % do nothing intentional
+end
+
 % fhi = f(Xhi)
 fhi = f(Xhi);
 if fhi == Inf % cannot progress from f=Inf
@@ -46,6 +50,8 @@ elseif fhi == 0 % lucky guess
     return
 else
     % do nothing intentional
+end
+
 
 % ITERATION
 iterJ = 1;
@@ -87,6 +93,7 @@ while iterJ < Maxits
     % increment iterJ
     iterJ = iterJ + 1;
 end
+
 
 % POST-ITERATION
 % flag = -1
