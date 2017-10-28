@@ -40,7 +40,7 @@ else
         iters = 0;
         return
     else
-        % interntional blank
+        % intentional blank
     end
 end
 
@@ -75,8 +75,7 @@ while iterJ < Maxits + 1
     end
     
     % modify Xlo and Xhi
-    flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice in each loop
-    if sign(flo) == sign(fm)
+    if sign(f(Xlo)) == sign(fm)
         Xlo = m;
     else
         Xhi = m;
