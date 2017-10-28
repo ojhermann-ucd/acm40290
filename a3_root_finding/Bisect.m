@@ -1,5 +1,6 @@
 function [root, flag, iters] = Bisect(Xlo, Xhi, Xtol, Maxits)
 
+
 % generate the function
 f = @FUN;
 
@@ -14,7 +15,7 @@ if (Xlo == Inf) || (Xhi == Inf)
     return
 end
 
-% Xlo == Xhi
+% Xlo == Xhi and Xlo != Xhi but possiblye infinite f-values
 if Xlo == Xhi
     if f(Xlo) == 0 % lucky guess
         root = Xlo;
@@ -26,6 +27,20 @@ if Xlo == Xhi
         flag = -2;
         iters = 0;
         return
+    end
+else
+    if f(Xlo) == Inf % cannot compare signs if infinite
+        root = Xlo;
+        flag = -2;
+        iters = 0;
+        return
+    elseif f(Xhi) == Inf % cannot compare signs if infinite
+        root = Xhi;
+        flag = -2;
+        iters = 0;
+        return
+    else
+        % interntional blank
     end
 end
 
@@ -42,7 +57,7 @@ while iterJ < Maxits + 1
         return
     end
     
-    % check f-value is zero
+    % check f-value is zero or Inf
     m = Xlo + ((Xhi - Xlo) / 2);
     fm = f(m); % adding because cheaper to save number than run calc more than once; worst case the value is used more than once and function calc is non trivial expense
     if fm == 0
@@ -50,16 +65,18 @@ while iterJ < Maxits + 1
         flag = 1;
         iters = iterJ;
         return
-    end
-    
-    % modify Xlo and Xhi
-    flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice in each loop
-    if flo == Inf % can't progress with an infinite value b/c will not be useable for future comparisons
+    elseif fm == Inf
         root = m;
         flag = -2;
         iters = iterJ;
         return
-    elseif sign(flo) == sign(fm)
+    else
+        % intentional blank
+    end
+    
+    % modify Xlo and Xhi
+    flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice in each loop
+    if sign(flo) == sign(fm)
         Xlo = m;
     else
         Xhi = m;
