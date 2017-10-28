@@ -1,0 +1,11 @@
+function [root, flag, iters] = ModFzero(X1, X2, Xtol, Maxits)
+
+
+% generate the functions
+f = @FUN;
+df = @DFUN;
+
+
+% check for inputs of X
+if isempty(X1)
+    if is
