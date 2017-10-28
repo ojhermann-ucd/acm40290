@@ -56,7 +56,7 @@ end
 % ITERATION
 iterJ = 1;
 m = 0;
-while iterJ < Maxits
+while iterJ < Maxits + 1
     % m value
     m = Xlo + ((Xhi - Xlo) / 2);
     
@@ -101,6 +101,8 @@ root = m;
 flag = -1;
 iters = iterJ;
 return
+
+end
 
 
 %{
