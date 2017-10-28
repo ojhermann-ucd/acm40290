@@ -15,7 +15,7 @@ if (Xlo == Inf) || (Xhi == Inf)
     return
 end
 
-% check x-sequence convergence
+% check premature x-sequence convergence
 if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
     root = Xlo;
     flag = 0;
@@ -23,7 +23,7 @@ if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
     return
 end
 
-% Xlo == Xhi and Xlo != Xhi but possiblye infinite f-values
+% Xlo == Xhi and Xlo != Xhi but possibly Inf f-values
 if Xlo == Xhi
     if f(Xlo) == 0 % lucky guess
         root = Xlo;
@@ -57,14 +57,6 @@ end
 iterJ = 1;
 while iterJ < Maxits + 1
     
-    % check x-sequence convergence
-    if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
-        root = Xlo;
-        flag = 0;
-        iters = iterJ - 1;
-        return
-    end
-    
     % check f-value is zero or Inf
     m = Xlo + ((Xhi - Xlo) / 2);
     fm = f(m); % adding because cheaper to save number than run calc more than once; worst case the value is used more than once and function calc is non trivial expense
@@ -89,8 +81,20 @@ while iterJ < Maxits + 1
         Xhi = m;
     end
     
+    % check x-sequence convergence; done after change in x values, so
+    % technically an increment, so use iterJ b/c it hasn't been changed yet
+    % but using next values of x (and would otherwise use iterJ - 1; this
+    % saves an operation
+    if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
+        root = Xlo;
+        flag = 0;
+        iters = iterJ;
+        return
+    end
+    
     % increment iterJ
     iterJ = iterJ + 1;
+    
 end
 
 

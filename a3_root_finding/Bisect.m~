@@ -1,5 +1,6 @@
 function [root, flag, iters] = Bisect(Xlo, Xhi, Xtol, Maxits)
 
+
 % generate the function
 f = @FUN;
 
@@ -14,7 +15,15 @@ if (Xlo == Inf) || (Xhi == Inf)
     return
 end
 
-% Xlo == Xhi
+% check premature x-sequence convergence
+if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
+    root = Xlo;
+    flag = 0;
+    iters = 0;
+    return
+end
+
+% Xlo == Xhi and Xlo != Xhi but possibly Inf f-values
 if Xlo == Xhi
     if f(Xlo) == 0 % lucky guess
         root = Xlo;
@@ -27,6 +36,20 @@ if Xlo == Xhi
         iters = 0;
         return
     end
+else
+    if f(Xlo) == Inf % cannot compare signs if infinite
+        root = Xlo;
+        flag = -2;
+        iters = 0;
+        return
+    elseif f(Xhi) == Inf % cannot compare signs if infinite
+        root = Xhi;
+        flag = -2;
+        iters = 0;
+        return
+    else
+        % intentional blank
+    end
 end
 
 
@@ -34,16 +57,7 @@ end
 iterJ = 1;
 while iterJ < Maxits + 1
     
-    % check x-sequence convergence
-    if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
-        root = Xlo;
-        flag = 0;
-        iters = iterJ - 1;
-        return
-    end
-    
-    % check f-value is zero
-    % m value
+    % check f-value is zero or Inf
     m = Xlo + ((Xhi - Xlo) / 2);
     fm = f(m); % adding because cheaper to save number than run calc more than once; worst case the value is used more than once and function calc is non trivial expense
     if fm == 0
@@ -51,23 +65,35 @@ while iterJ < Maxits + 1
         flag = 1;
         iters = iterJ;
         return
-    end
-    
-    % modify Xlo and Xhi
-    flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice in each loop
-    if flo == Inf % can't progress with an infinite value
+    elseif fm == Inf
         root = m;
         flag = -2;
         iters = iterJ;
         return
-    elseif sign(flo) == sign(fm)
+    else
+        % intentional blank
+    end
+    
+    % modify Xlo and Xhi
+    if sign(f(Xlo)) == sign(fm)
         Xlo = m;
     else
         Xhi = m;
     end
     
+    % check x-sequence convergence; done after change in x values, so
+    % technically an increment, so use iterJ b/c it hasn't been changed yet
+    % but using next values of x (and would otherwise
+    if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
+        root = Xlo;
+        flag = 0;
+        iters = iterJ;
+        return
+    end
+    
     % increment iterJ
     iterJ = iterJ + 1;
+    
 end
 
 
