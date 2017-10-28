@@ -4,9 +4,10 @@ function [root, flag, iters] = Secant(X1, X2, Xtol, Maxits)
 % generate the functions
 f = @FUN;
 
+
 % PRE-ITERATION CHECKS
 
-% make sure X inputs are not Inf
+% infinite x values
 if X1 == Inf
     root = X1;
     flag = -2;
@@ -15,19 +16,57 @@ if X1 == Inf
 elseif X2 == Inf
     root = X2;
     flag = -2;
-    iters =0;
+    iters = 0;
     return
 else
     % intentional blank
 end
 
-% check function
+% check premature x-sequence convergence
+if abs(X2 - X1) < (Xtol + eps * abs(X2)) % this would result in a garbage numerator, but possible f=0 (no need to chevk f-value)
+    root = X2;
+    flag = 0;
+    iters = 0;
+    return
+end
+
+% f-value checks
 F1 = f(X1);
+F2 = f(X2);
 if F1 == Inf
     root = X1;
     flag = -2;
-    iters
-F2 = f(X2);
+    iters = 0;
+    return
+elseif F2 == Inf
+    root = X2;
+    flag = -2;
+    iters = 0;
+    return
+elseif (F1 - F2) <= eps % going with high precision when evaluating F1 == F2, which would break denominator
+    root = X2;
+    flag = -2;
+    iters = 0;
+    return
+else
+    % intentional blank
+end
+
+
+% ITERATION
+
+iterJ = 1;
+while iterJ < Maxits + 1
+    X3 = X2 - F2 * (X2 - X1) / (F2 - F1)
+end
+
+
+% POST-ITERATION
+% flag = -1
+root = m;
+flag = -1;
+iters = iterJ;
+return
 
 
 end
