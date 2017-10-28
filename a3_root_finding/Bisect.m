@@ -15,6 +15,14 @@ if (Xlo == Inf) || (Xhi == Inf)
     return
 end
 
+% check x-sequence convergence
+if abs(Xlo - Xhi) < (Xtol + eps * abs(Xlo))
+    root = Xlo;
+    flag = 0;
+    iters = 0;
+    return
+end
+
 % Xlo == Xhi and Xlo != Xhi but possiblye infinite f-values
 if Xlo == Xhi
     if f(Xlo) == 0 % lucky guess
