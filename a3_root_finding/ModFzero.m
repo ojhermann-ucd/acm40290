@@ -9,10 +9,25 @@ if isempty(X1) && isempty(X2)
     return
 end
 
-% only one value given
+% only X2
 if isempty(X1)
-    % manage the variable
-    X1 = X2;
+    % define the problem
+    problem.objective = @FUN;
+    problem.X0 = X2;
+    problem.solver = 'fzero';
+    problem.options.TolX = (Xtol + eps * abs(X2));
+    problem.options.MaxIter = Maxits;
+    % generate the output
+    [x, exitflag, output] = fzero(problem);
+    % assign values to my output
+    root = x;
+    flag = exitflag;
+    iters = output.iteration;
+    return
+end
+
+% only X1
+if isempty(X2) 
     % define the problem
     problem.objective = @FUN;
     problem.X0 = X1;
@@ -26,10 +41,23 @@ if isempty(X1)
     flag = exitflag;
     iters = output.iteration;
     return
-    
-else
-    X2 = X1;
 end
+
+% both given
+X3 = min(abs(X1), abs(X2));
+% define the problem
+problem.objective = @FUN;
+problem.X0 = X3;
+problem.solver = 'fzero';
+problem.options.TolX = (Xtol + eps * abs(X3));
+problem.options.MaxIter = Maxits;
+% generate the output
+[x, exitflag, output] = fzero(problem);
+% assign values to my output
+root = x;
+flag = exitflag;
+iters = output.iteration;
+return
 
 end
 
