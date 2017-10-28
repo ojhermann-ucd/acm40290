@@ -43,6 +43,7 @@ while iterJ < Maxits + 1
     end
     
     % check f-value is zero
+    % m value
     m = Xlo + ((Xhi - Xlo) / 2);
     fm = f(m); % adding because cheaper to save number than run calc more than once; worst case the value is used more than once and function calc is non trivial expense
     if fm == 0
@@ -54,7 +55,7 @@ while iterJ < Maxits + 1
     
     % modify Xlo and Xhi
     flo = f(Xlo); % adding because cheaper to save number than run calc more than once; used twice in each loop
-    if flo == Inf % can't progress with an infinite value b/c will not be useable for future comparisons
+    if flo == Inf % can't progress with an infinite value
         root = m;
         flag = -2;
         iters = iterJ;

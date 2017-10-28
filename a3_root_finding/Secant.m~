@@ -1,0 +1,33 @@
+function [root, flag, iters] = Secant(X1, X2, Xtol, Maxits)
+
+
+% generate the functions
+f = @FUN;
+
+% PRE-ITERATION CHECKS
+
+% make sure X inputs are not Inf
+if X1 == Inf
+    root = X1;
+    flag = -2;
+    iters = 0;
+    return
+elseif X2 == Inf
+    root = X2;
+    flag = -2;
+    iters =0;
+    return
+else
+    % intentional blank
+end
+
+% check function
+F1 = f(X1);
+if F1 == Inf
+    root = X1;
+    flag = -2;
+    iters
+F2 = f(X2);
+
+
+end
