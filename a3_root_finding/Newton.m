@@ -87,7 +87,7 @@ end
 
 % POST-ITERATION
 % flag = -1
-root = m;
+root = Xp;
 flag = -1;
 iters = iterJ;
 return
