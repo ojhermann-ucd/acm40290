@@ -34,7 +34,7 @@ end
 
 % check derivative
 dF = df(Xp); % making this global is efficient
-if df == Inf || df == 0 % cannot evaluate if derivative is Inf or Zero
+if dF == Inf || dF == 0 % cannot evaluate if derivative is Inf or Zero
     root = Xp;
     flag = -2;
     iters = 0;
