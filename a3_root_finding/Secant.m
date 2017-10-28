@@ -23,7 +23,7 @@ else
 end
 
 % check premature x-sequence convergence
-if abs(X2 - X1) < (Xtol + eps * abs(X2)) % this would result in a garbage numerator, but possible f=0 (no need to chevk f-value)
+if abs(X2 - X1) < (Xtol + eps * abs(X2)) % this would result in a garbage numerator, but possible f=0 (no need to check f-value as will return same value regardless)
     root = X2;
     flag = 0;
     iters = 0;
