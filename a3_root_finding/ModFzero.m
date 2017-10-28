@@ -56,7 +56,7 @@ problem.options.MaxIter = Maxits;
 % assign values to my output
 root = x;
 flag = exitflag;
-iters = output.iteration;
+iters = output;
 return
 
 end
