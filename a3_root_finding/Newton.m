@@ -73,7 +73,7 @@ while iterJ < Maxits + 1
     
     % df == Zero or Inf test
     dF = df(Xq);
-    if dF == Inf || df == 0
+    if dF == Inf || dF == 0
         root = Xq;
         flag = -2;
         iters = iterJ;
@@ -82,7 +82,7 @@ while iterJ < Maxits + 1
     
     % move on to the next iteration
     Xp = Xq;
-    iterJ = IterJ + 1;
+    iterJ = iterJ + 1;
 end
 
 % POST-ITERATION
