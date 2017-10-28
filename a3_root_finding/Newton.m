@@ -47,21 +47,28 @@ iterJ = 1;
 while iterJ < Maxits + 1
     
     % x sequence convergence test
-    Xq = Xp - pF/dF;
+    Xq = Xp - F/dF;
     if abs(Xp - Xq) < (Xtol + eps * abs(Xp))
         root = Xp;
         flag = 0;
-        iters = iterJ;
+        iters = iterJ - 1;
         return
     end
     
-    % f == Zero test
+    % f tests
     F = f(Xq);
-    if F == 0
+    if F == 0 % f-value is zero
         root = Xq;
         flag = 1;
         iters = iterJ;
         return
+    elseif F == Inf % we cannot proceed
+        root = Xq;
+        flag = -2;
+        iters = iterJ;
+        return
+    else
+        % intentional blank
     end
     
     % df == Zero or Inf test
