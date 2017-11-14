@@ -1,0 +1,20 @@
+% inputs
+A = [5 7 6 5; 7 10 8 7; 6 8 10 9; 5 7 9 10];
+b = [23; 32; 33; 31];
+x = [1;1;1;1];
+
+% RELATIVE ERROR IN THE CALCULATED X
+x_calc = A\b;
+x_re = norm(x_calc - x);
+fprintf('x \n');
+disp(x);
+fprintf('x_calc \n');
+disp(x_calc);
+fprintf('relative error in x_numerical \n');
+disp(x_re);
+
+% RESIDUAL VECTOR r = b - Ax_calc
+fprintf('b \n');
+disp(b);
+fprintf('Ax_calc \n');
+disp(A\
