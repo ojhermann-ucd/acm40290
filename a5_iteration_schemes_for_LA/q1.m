@@ -18,4 +18,5 @@ b = [
     ];
 
 f = @jacobi;
-disp(f(A,b, 0.01));
+tol = 0.001;
+disp(f(A,b, tol));
