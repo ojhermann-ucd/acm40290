@@ -5,10 +5,10 @@ t = 0:1:100;
 initial_u_1 = 1;
 initial_u_2 = 0;
 
-[t,x]=ode45( @rhs, t, [initial_u_1; initial_u_2] );
+[t,u]=ode45( @rhs, t, [initial_u_1; initial_u_2], eps*t);
 
-plot(t,x(:,1));
-xlabel('t'); ylabel('x');
+plot(u(:,1),u(:,2));
+xlabel('u1'); ylabel('u2');
 
     function dudt=rhs(t,u)
         dudt_1 = u(2);
