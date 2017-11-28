@@ -17,6 +17,8 @@ b = [
     55;
     ];
 
-f = @jacobi;
 tol = 0.001;
+
+% run the function
+f = @jacobi ;
 disp(f(A,b, tol));
