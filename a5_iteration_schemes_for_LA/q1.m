@@ -17,7 +17,7 @@ b = [
     55;
     ];
 
-tol = 0.001;
+tol = 0.001 * eps;
 
 % run the function
 f = @jacobi ;
