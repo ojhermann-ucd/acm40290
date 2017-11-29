@@ -1,6 +1,6 @@
 function q1
 
-t = 0:1:100;
+t = 0:100;
 
 initial_u_1 = 1;
 initial_u_2 = 0;

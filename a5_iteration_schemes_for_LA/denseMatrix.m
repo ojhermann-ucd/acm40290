@@ -33,6 +33,9 @@ function [ val, col, rowstart, d ] = denseMatrix( A )
             end
         end
     end
+    
+    % last bit for rowstart
+    rowstart = [rowstart, length(col) + 1];
 
 
     % return

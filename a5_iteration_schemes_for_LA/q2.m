@@ -1,26 +1,27 @@
-for w = 0.5:.05:1.95
-    % n
-    n = 5;
+% n
+n = 5;
 
-    % A
-    f1 = @tridiag;
-    A = f1(n);
+% A
+f1 = @tridiag;
+A = f1(n);
 
-    % b
-    b = ones(n, 1);
+% b
+b = ones(n, 1);
 
-    % denseMatrix
-    f2 = @denseMatrix;
-    [ val, col, rowstart, d ] = f2(A);
+% denseMatrix
+f2 = @denseMatrix;
+[ val, col, rowstart, d ] = f2(A);
 
-    % sor
-    f3 = @sor;
-%     w = 1.4;
-    tol = 4 * eps;
-    maxits = 5;
-    [x] = sor(n, val, col, rowstart, d, b, w, tol, maxits);
-    disp(x);
-end
+% sor
+f3 = @sor;
 
+% Matlab
 S = sparse(A);
-disp(pcg(S, b));
+[mVersion, flag] = pcg(S, b);
+
+for w = 0.95
+    % sor
+    tol = 4 * eps;
+    maxits = 100000;
+    [x, k] = f3(n, val, col, rowstart, d, b, w, tol, maxits);
+end
