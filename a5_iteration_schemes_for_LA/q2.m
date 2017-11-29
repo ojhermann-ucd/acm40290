@@ -1,5 +1,5 @@
 % n
-n = 5;
+n = 1000;
 
 % A
 f1 = @tridiag;
@@ -51,7 +51,3 @@ disp("W Values");
 disp(bestWHolder);
 disp("Iteration Count Values");
 disp(bestKHolder);
-
-disp("We cans see the most accurate value for the least iterations is W = 1.35 for 36 iterations.");
-disp("However, given the magnitude of the differences in norms, it's likely roundoff and othe errors are at play.");
-disp("So, these are all pretty good.");
