@@ -32,18 +32,7 @@ for w = 0.5:0.01:1.95
     [x, k] = f3(n, val, col, rowstart, d, b, w, tol, maxits);
     
     compValue = abs(norm(x) - norm(mVersion));
-    if compValue < currentValue
-        currentValue = compValue;
-        bestK = k;
-        bestW = w;
-        bestKHolder = [k];
-        bestWHolder = [w];
-    elseif compValue == currentValue
-        bestKHolder = [bestKHolder, k];
-        bestWHolder = [bestWHolder, w];
-    else
-        % intentional blank
+    if compValue < best
+        
     end
 end
-disp(bestWHolder);
-disp(bestKHolder);
