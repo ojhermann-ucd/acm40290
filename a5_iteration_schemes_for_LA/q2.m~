@@ -32,7 +32,25 @@ for w = 0.5:0.01:1.95
     [x, k] = f3(n, val, col, rowstart, d, b, w, tol, maxits);
     
     compValue = abs(norm(x) - norm(mVersion));
-    if compValue < best
-        
+    if compValue < currentValue
+        currentValue = compValue;
+        bestK = k;
+        bestW = w;
+        bestKHolder = [k];
+        bestWHolder = [w];
+    elseif compValue == currentValue
+        bestKHolder = [bestKHolder, k];
+        bestWHolder = [bestWHolder, w];
+    else
+        % intentional blank
     end
 end
+disp("Minimum Difference in Norms");
+disp(compValue);
+disp("W Values");
+disp(bestWHolder);
+disp("Iteration Count Values");
+disp(bestKHolder);
+
+disp("We cans see the most accurate value for the least iterations is W = 1.35 for 36 iterations.");
+disp("However, given the magnitude of the differences in norms, it's liekl");

@@ -45,5 +45,13 @@ for w = 0.5:0.01:1.95
         % intentional blank
     end
 end
+disp("Minimum Difference in Norms");
+disp(compValue);
+disp("W Values");
 disp(bestWHolder);
+disp("Iteration Count Values");
 disp(bestKHolder);
+
+disp("We cans see the most accurate value for the least iterations is W = 1.35 for 36 iterations.");
+disp("However, given the magnitude of the differences in norms, it's likely roundoff and othe errors are at play.");
+disp("So, these are all pretty good.");
