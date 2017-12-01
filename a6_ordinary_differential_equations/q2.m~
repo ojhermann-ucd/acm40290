@@ -22,11 +22,11 @@ function dudt = rhs(t, u)
 end
 
 % ODE
-opts = odeset('RelTol',10e-8,'AbsTol',10e-8);
-[t, u] = ode45(@rhs, t, [initial_u_1; initial_u_2], opts);
+[t, u] = ode45(@rhs, t, [initial_u_1; initial_u_2], 10e-8);
 
 % plot
-plot(abs(u - [initial_u_1, initial_u_2]) / [initial_u_1, initial_u_2] ), log(t);
-xlabel('t'); ylabel('E(t) - E(0)');
+% plot(u(:,1) - initial_u_1, u(:,2) - initial_u_2);
+plot(log(abs(u - [initial_u_1, initial_u_2])), t);
+xlabel('E(t)'); ylabel('t');
 
 end

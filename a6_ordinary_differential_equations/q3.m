@@ -4,7 +4,7 @@ function q1
 t = 0:100;
 
 % alpha
-alpha = 1.0;
+alpha = 0.99;
 
 % initial values
 initial_u_1 = alpha;
